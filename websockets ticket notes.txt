@@ -1,0 +1,15 @@
+1.permessage-deflate is a common WebSocket extension
+2.Sec-WebSocket-Extensions is a header field in the WebSocket protocol that specifies the extensions that the client and server support. WebSocket extensions are additional features that can be used to enhance the performance, security, or functionality of the WebSocket communication.
+   
+   
+   
+notes 
+
+1.In this scenario, the client (presumably implemented using Netty) sends a WebSocket request that includes the permessage-deflate extension with a specific set of parameters (client_max_window_bits). The server responds with a WebSocket response that also includes permessage-deflate, but with different parameters (server_no_context_takeover and client_no_context_takeover).
+
+2.the issue here is that the request and response have different Sec-WebSocket-Extensions values, which means that the client and server are not using the same set of extensions with the same parameters.
+
+The suggested fix is to add "extension handshakers" to the Netty pipeline based on the response Sec-WebSocket-Extensions. An extension handshaker is a component that negotiates and manages the use of a specific WebSocket extension between the client and server. By adding the appropriate extension handshakers based on the response, the Netty pipeline can properly handle the WebSocket communication with the chosen extensions and parameters.
+
+--------------------------------
+a pipeline is a sequence of handlers that are responsible for processing incoming data from a network socket and producing outgoing data to be sent back over the network.
