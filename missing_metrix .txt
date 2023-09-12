@@ -1,0 +1,27 @@
+NOTES 
+		PREFIX 						Missing Metric
+
+1 . sla.proxy.tcp.server    		tls.handshake.time
+
+2.  sla.proxy.tcp.client    		data.sent
+									data.received
+									errors
+									connections.total
+									tls.handshake.time
+									
+3.sla.proxy.http.server				---
+
+4.sla.proxy.http.client				data.sent
+									data.received
+									errors
+									
+5.netty.eventloop					---
+								
+6.netty.bytebuf.allocator			---
+
+7.sla.proxy.internal				errors
+									
+								
+8.proxy.metrics						jvm.gc.max.data.size
+									jvm.gc.live.data.size
+									jvm.gc.concurrent.phase.time
