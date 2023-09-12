@@ -1,0 +1,22 @@
+    <spel uriPattern=".*git/git-receive-pack" resolutionStage="request">
+                                (
+                                #ccutil.regexMatch(#ccHttpRequest.getRequestLine().getUri(), ".*github.com/([^/]+?)?/.*.git/git-receive-pack") !="")
+                                )
+                                ?
+                                {
+                                "companyID": #ccutil.regexGroup("#ccHttpRequest.getRequestLine().getUri()", ".*github.com/([^/]+?)?/.*.git/git-receive-pack")
+                                }
+                                :
+                                {:}
+                        </spel>
+                        <spel uriPattern=".*git/git-upload-pack" resolutionStage="request">
+                                (
+                                #ccutil.regexMatch(#ccHttpRequest.getRequestLine().getUri(), ".*github.com/([^/]+?)?/.*.git/git-upload-pack") !="")
+                                )
+                                ?
+                                {
+                                "companyID": #ccutil.regexGroup("#ccHttpRequest.getRequestLine().getUri()", ".*github.com/([^/]+?)?/.*.git/git-upload-pack")
+                                }
+                                :
+                                {:}
+                        </spel>
